@@ -14,6 +14,10 @@ module Griddler
 
       def normalize_params
         {
+          vendor_specific: {
+            message_id: params['Message-Id']
+          },
+          original_recipient: params['recipient'],
           to: to_recipients,
           cc: cc_recipients,
           bcc: Array.wrap(param_or_header(:Bcc)),
